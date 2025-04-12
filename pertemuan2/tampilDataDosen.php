@@ -1,7 +1,7 @@
 <?php
-include "koneksi.php";
+include "../pertemuan1/koneksi.php";
 
-$sql = "SELECT NIPD,namaMhs,tanggalLahir,alamat FROM mhs";
+$sql = "SELECT nid,nama,alamat,mataKuliah FROM dosen";
 $result = $conn->query($sql);
 ?>
 
@@ -15,18 +15,18 @@ $result = $conn->query($sql);
     <!-- Bootstrap CSS -->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <title>Hello, world!</title>
+    <title>Data Dosen</title>
   </head>
   <body class="text-center">
-    <h1>Data Mahasiswa ASE</h1>
+    <h1>Data Dosen</h1>
 
 <table class="table">
     <thead>
         <tr>
         <th scope="col">#</th>
-        <th scope="col">NIPD</th>
+        <th scope="col">NID</th>
         <th scope="col">Nama</th>
-        <th scope="col">Tanggal Lahir</th>
+        <th scope="col">Mata Kuliah</th>
         <th scope="col">Alamat</th>
         </tr>
     </thead>
@@ -37,9 +37,9 @@ $result = $conn->query($sql);
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
                 echo "<th scope='row'>".$i++."</th>";
-                echo "<td>".$row['NIPD']."</td>";
-                echo "<td>".$row['namaMhs']."</td>";
-                echo "<td>".$row['tanggalLahir']."</td>";
+                echo "<td>".$row['nid']."</td>";
+                echo "<td>".$row['nama']."</td>";
+                echo "<td>".$row['mataKuliah']."</td>";
                 echo "<td>".$row['alamat']."</td>";
                 echo "</tr>";
             }

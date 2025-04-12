@@ -27,10 +27,10 @@ include "koneksi.php";
     </div>
     <div class="form-group">
         <label for="tgl_lahir">Tanggal Lahir</label>
-        <input type="text" class="form-control" name="tgl_lahir" placeholder="Tanggal Lahir Mahasiswa">
+        <input type="date" class="form-control" name="tgl_lahir" placeholder="Tanggal Lahir Mahasiswa">
     </div>
     <div class="form-group">
-        <label for="alamat">Nama</label>
+        <label for="alamat">Alamat Mahasiswa</label>
         <input type="text" class="form-control" name="alamat" placeholder="Alamat Mahasiswa">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>        
@@ -52,5 +52,6 @@ if (!empty($_POST)) {
 
     $sql1 = "INSERT INTO `mhs` (`id`, `NIPD`, `namaMhs`, `tanggalLahir`, `alamat`, `created_at`, `updated_at`) VALUES (NULL, '$nipdMhs', '$namaMhs', '$tglLahirMhs', '$alamatMhs', current_timestamp(), NULL)";
     $conn->query($sql1);
+
 }
 ?>
