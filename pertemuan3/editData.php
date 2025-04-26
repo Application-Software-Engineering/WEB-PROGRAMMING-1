@@ -2,19 +2,30 @@
 <?php
 include "../pertemuan1/koneksi.php";
 
-if (isset($_POST['submit'])) {
+if (isset($_GET["id"])) {
+    $id = $_GET["id"];
+    $sql = "SELECT * FROM mhs WHERE id='$id'";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+}
+
+if (isset($_POST['update'])) {
     $nipdMhs = $_POST['nipd'];
     $namaMhs = $_POST['nama'];
     $tglLahirMhs = $_POST['tgl_lahir'];
     $alamatMhs = $_POST['alamat'];
 
-    $sql = "INSERT INTO mhs (NIPD, namaMhs, tanggalLahir, alamat) VALUES ('$nipdMhs', '$namaMhs', '$tglLahirMhs', '$alamatMhs')";
+    $sql = "UPDATE mhs SET NIPD = '$nipdMhs', namaMhs = '$namaMhs', tanggalLahir = '$tglLahirMhs', alamat = '$alamatMhs' WHERE id = '$id'";
 
     if ($conn->query($sql) === TRUE) {
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                Data Berhasil Ditambahkan!
+                Data Berhasil Diupdate!
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>';
+        
+        $conn->close();
+        header('Location: ../pertemuan1/tampilDataMhs.php');
+        exit();
     } else {
         echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
                 Error : ".$sql."<br>".$conn->error."
@@ -35,10 +46,10 @@ if (isset($_POST['submit'])) {
     <!-- Bootstrap CSS -->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <title>Input Data Mahasiswa</title>
+    <title>Update Data Mahasiswa</title>
   </head>
   <body class="">
-    <h1 class="text-center">Input Data Mahasiswa ASE</h1>
+    <h1 class="text-center">Update Data Mahasiswa ASE</h1>
 
     <div class="container">
         <div class="row">
@@ -46,23 +57,23 @@ if (isset($_POST['submit'])) {
                 <form action="" method="post" class="border border-success p-4 rounded shadow">
                     <div class="mb-3">
                     <label class="form-label" for="">NIPD</label>
-                    <input type="text" name="nipd" class="form-control" maxlength="12" required>
+                    <input type="text" name="nipd" class="form-control" maxlength="12" value="<?php echo $row['NIPD'];?>" required>
                     </div>
 
                     <div class="mb-3">
                     <label class="form-label" for="">Nama</label>
-                    <input type="text" name="nama" class="form-control" required>
+                    <input type="text" name="nama" class="form-control" value="<?php echo $row['namaMhs'];?>" required>
                     </div>
 
                     <div class="mb-3">
                     <label class="form-label" for="">Tanggal Lahir</label>
-                    <input type="date" name="tgl_lahir" class="form-control" max="2006-12-31" required>
+                    <input type="date" name="tgl_lahir" class="form-control" max="2006-12-31" value="<?php echo $row['tanggalLahir'];?>" required>
                     </div>
 
                     <div class="mb-3">
                     <label class="form-label" for="">Alamat</label>
-                    <textarea class="form-control mb-3" name="alamat" id="" rows="3" required></textarea>
-                    <button type="submit" name="submit" class="form-control btn btn-success mb-3">Submit</button>
+                    <textarea class="form-control mb-3" name="alamat" id="" rows="3" required><?php echo $row['alamat'];?></textarea>
+                    <button type="submit" name="update" class="form-control btn btn-warning mb-3">Update</button>
                     <a href="../pertemuan1/tampilDataMhs.php"><button type="button" class="form-control btn btn-primary" name="submit">Kembali</button></a>
                     </div>
                 </form>
