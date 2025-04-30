@@ -58,7 +58,7 @@
                     <label class="form-label" for="">Alamat</label>
                     <textarea class="form-control mb-3" name="alamat" id="" rows="3" required></textarea>
                     <button type="submit" name="submit" class="form-control btn btn-success mb-2">Submit</button>
-                    <a href="../crud/home.php"><button type="button" class="form-control btn btn-primary" name="submit">Kembali</button></a>
+                    <a href="./tampilDatamhs.php"><button type="button" class="form-control btn btn-primary" name="submit">Kembali</button></a>
                     </div>
                 </form>
         </div>

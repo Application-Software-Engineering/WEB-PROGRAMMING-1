@@ -1,4 +1,4 @@
-<!doctype html>
+=<!doctype html>
 <?php
 include "../../pertemuan1/koneksi.php";
 

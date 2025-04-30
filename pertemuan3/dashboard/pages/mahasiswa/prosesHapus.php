@@ -30,7 +30,7 @@ if (isset($_GET['id'])) {
 }
 
 $conn->close();
-header("Location: ../../tampilDatamhs.php");
+header("Location: ./tampilDatamhs.php");
 exit();
 
 ?>

@@ -1,7 +1,7 @@
 <!doctype html>
 <?php 
     session_start();
-    include "../koneksi.php";
+    include "../../../koneksi.php";
 
     // Ambil ID mahasiswa yang akan diubah
     if (isset($_GET['id'])) {
@@ -39,7 +39,7 @@
     }
 
 ?>
-   <?php include "./components/header.php"; ?>
+   <?php include "../../components/header.php"; ?>
 
     <div class="header">
         <h4>Ubah Data Mahasiswa ASE10</h4>
@@ -70,4 +70,4 @@
                 </form>
     </div>
 
-   <?php include "./components/footer.php"; ?>
+   <?php include "../../components/footer.php"; ?>
